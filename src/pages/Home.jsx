@@ -1,7 +1,9 @@
+import { useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import Button from '../components/ui/Button'
 import HeroSection from '../components/ui/glassmorphism-trust-hero'
+import { useAuth } from '../context/AuthContext'
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -84,6 +86,17 @@ const gradeRows = [
 ]
 
 export default function Home() {
+  const { isLoading, isAuthenticated } = useAuth()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (!isLoading && isAuthenticated) {
+      navigate('/dashboard', { replace: true })
+    }
+  }, [isLoading, isAuthenticated, navigate])
+
+  if (!isLoading && isAuthenticated) return null
+
   return (
     <>
       <HeroSection />
