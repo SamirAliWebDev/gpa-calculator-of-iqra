@@ -1,0 +1,91 @@
+{
+  "app": "Iqra University GPA Calculator",
+  "version": "1.0.0",
+  "description": "Data isolation and access control rules for the GPA Calculator application",
+
+  "core_rule": "Every user can ONLY see, create, update, and delete their own data. No user can access another user's data under any circumstances.",
+
+  "entities": {
+    "profiles": {
+      "description": "User profile with name and university info",
+      "ownership": "userId field (must match authenticated user ID)",
+      "allowed_actions": {
+        "view": "own only — user sees only their profile",
+        "create": "own only — profile linked to authenticated user",
+        "update": "own only — can edit own name only",
+        "delete": "not allowed — profiles are managed via auth"
+      },
+      "blocked_actions": {
+        "view_others": "Cannot see other users' profiles",
+        "create_for_others": "Cannot create profiles for other users",
+        "update_others": "Cannot edit other users' profiles"
+      }
+    },
+
+    "semesters": {
+      "description": "Academic semesters (e.g. Fall 2025, Spring 2026)",
+      "ownership": "userId field (must match authenticated user ID)",
+      "allowed_actions": {
+        "view": "own only — user sees only their semesters",
+        "create": "own only — semester tagged with user ID",
+        "update": "own only — can edit own semester name/type/year",
+        "delete": "own only — deleting semester cascades to its subjects"
+      },
+      "blocked_actions": {
+        "view_others": "Cannot see other users' semesters",
+        "create_for_others": "Cannot create semesters for other users",
+        "update_others": "Cannot edit other users' semesters",
+        "delete_others": "Cannot delete other users' semesters"
+      }
+    },
+
+    "subjects": {
+      "description": "Individual courses within a semester (name, credits, grade)",
+      "ownership": "userId field (must match authenticated user ID)",
+      "allowed_actions": {
+        "view": "own only — user sees only their subjects",
+        "create": "own only — subject tagged with user ID and linked to own semester",
+        "update": "own only — can edit own subject name/credits/grade",
+        "delete": "own only — deleting subject triggers GPA recalculation"
+      },
+      "blocked_actions": {
+        "view_others": "Cannot see other users' subjects",
+        "create_for_others": "Cannot create subjects for other users",
+        "update_others": "Cannot edit other users' subjects",
+        "delete_others": "Cannot delete other users' subjects"
+      }
+    },
+
+    "$users": {
+      "description": "Built-in auth user entity managed by Instant DB",
+      "ownership": "auth.id must match entity id",
+      "allowed_actions": {
+        "view": "own only — can see own user record",
+        "update": "own only — can update own user record"
+      },
+      "blocked_actions": {
+        "view_others": "Cannot see other users' auth records",
+        "update_others": "Cannot modify other users' auth records"
+      }
+    }
+  },
+
+  "enforcement": {
+    "layer_1_client": "Queries filter by userId field — only fetches current user's data",
+    "layer_2_permissions": "Instant DB permission rules (instant.perms.js) — server-side deny if client tries to access other users' data",
+    "layer_3_defaults": "$default deny — any entity without explicit allow rules is blocked by default"
+  },
+
+  "data_flow": {
+    "registration": "User signs up via magic code → profile created with userId",
+    "semester_creation": "Authenticated user creates semester → userId stamped on creation",
+    "subject_creation": "Authenticated user adds subject to own semester → userId stamped on creation",
+    "gpa_calculation": "GPA computed from user's own subjects only",
+    "profile_display": "User sees own name/email from own profile entity"
+  },
+
+  "cascade_rules": {
+    "semester_delete": "Deleting a semester deletes all its linked subjects",
+    "user_delete": "Deleting a user cascades to their profile, semesters, and subjects"
+  }
+}
