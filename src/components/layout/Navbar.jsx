@@ -4,9 +4,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Button from '../ui/Button'
 
 const navLinks = [
-  { label: 'Home', to: '/' },
-  { label: 'Features', to: '/#features' },
-  { label: 'How It Works', to: '/#how-it-works' },
+  { label: 'Home', href: '#' },
+  { label: 'Features', href: '#features' },
+  { label: 'How It Works', href: '#how-it-works' },
 ]
 
 export default function Navbar() {
@@ -25,13 +25,13 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <Link
+              <a
                 key={link.label}
-                to={link.to}
+                href={link.href}
                 className="px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
               >
                 {link.label}
-              </Link>
+              </a>
             ))}
           </div>
 
@@ -69,14 +69,14 @@ export default function Navbar() {
           >
             <div className="px-4 py-3 space-y-1">
               {navLinks.map((link) => (
-                <Link
+                <a
                   key={link.label}
-                  to={link.to}
+                  href={link.href}
                   className="block px-4 py-2 text-sm font-medium text-zinc-300 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
                   onClick={() => setMobileOpen(false)}
                 >
                   {link.label}
-                </Link>
+                </a>
               ))}
               <div className="pt-2 flex flex-col gap-2">
                 <Link to="/login" onClick={() => setMobileOpen(false)}>
