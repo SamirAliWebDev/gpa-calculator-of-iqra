@@ -75,11 +75,11 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-24 pb-12 sm:px-6 md:pt-32 md:pb-20 lg:px-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 pt-16 pb-8 sm:px-6 md:pt-20 md:pb-12 lg:px-8">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-8 items-start">
 
           {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col justify-center space-y-8 pt-8">
+          <div className="lg:col-span-7 flex flex-col justify-center space-y-6 pt-4 lg:pt-8">
 
             {/* Badge */}
             <div className="animate-fade-in delay-100">
