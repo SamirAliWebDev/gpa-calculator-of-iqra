@@ -89,7 +89,7 @@ export default function Home() {
       <HeroSection />
 
       {/* Features */}
-      <section id="features" className="py-20 sm:py-28 relative">
+      <section id="features" className="scroll-mt-20 py-20 sm:py-28 relative">
         {/* Background glow */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/4 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -translate-y-1/2" />
@@ -137,7 +137,7 @@ export default function Home() {
       </section>
 
       {/* How It Works */}
-      <section id="how-it-works" className="py-20 sm:py-28 relative">
+      <section id="how-it-works" className="scroll-mt-20 py-20 sm:py-28 relative">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-primary/5 rounded-full blur-[120px]" />
         </div>
