@@ -191,11 +191,6 @@ src/
 
 ## Instant DB Integration
 
-### App ID
-```
-8630ede0-ac9c-4241-bfee-3561645823fd
-```
-
 ### Data Model
 - `$users` → `profiles` (1:1, via `$user` link)
 - `$users` → `semesters` (1:many, via `$user` link, cascade delete)

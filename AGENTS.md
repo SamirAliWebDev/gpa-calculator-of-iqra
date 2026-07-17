@@ -31,31 +31,7 @@ npm run build     # Production build
 npm run preview   # Preview production build
 ```
 
-### Color Palette — Light Theme (used in layout, features, cards, CTA)
-- Primary: #3B82F6 (Blue-500)
-- Primary Dark: #1E40AF (Blue-800)
-- Secondary: #F0F9FF (Blue-50)
-- Accent: #10B981 (Emerald-500)
-- Surface: #FFFFFF
-- Text: #1E293B (Slate-800)
-- Text Light: #64748B (Slate-500)
-- Border: #E2E8F0 (Slate-200)
 
-### Color Palette — Dark Glass Theme (used everywhere)
-- Base: zinc-950 (#09090b)
-- Glass: white/5, white/10, white/20 (backdrop-blur-xl)
-- Glass border: white/10
-- Text primary: white
-- Text secondary: zinc-300
-- Text muted: zinc-400
-- Text faint: zinc-500
-- Gradient text: white → #60a5fa (blue-400 complement)
-- Accent glow: primary at 15% opacity (radial gradient)
-- Secondary glow: accent at 10% opacity (radial gradient)
-- Active status: green-500 with green-400 ping
-- Premium/crown: yellow-500
-- Progress bar: gradient primary → accent (#3B82F6 → #10B981)
-- Divider: white/10
 
 ### Color Usage Rules
 - Dark glass theme is the unified theme for the entire app
@@ -99,11 +75,6 @@ src/
 ---
 
 ## Instant DB Integration
-
-### App ID
-```
-8630ede0-ac9c-4241-bfee-3561645823fd
-```
 
 ### Data Model
 - `$users` → `profiles` (1:1, via `$user` link)
