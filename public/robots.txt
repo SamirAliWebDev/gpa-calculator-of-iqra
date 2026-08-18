@@ -1,0 +1,9 @@
+# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /profile
+
+Sitemap: https://gpa-calculator-lyart-ten.vercel.app/sitemap.xml

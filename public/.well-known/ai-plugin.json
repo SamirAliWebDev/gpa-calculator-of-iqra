@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.org",
+  "name": "Iqra University GPA Calculator",
+  "description": "Free, accurate GPA calculator for Iqra University students. Calculate SGPA using the official grading scale with a modern dark UI.",
+  "url": "https://gpa-calculator-lyart-ten.vercel.app/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "PKR"
+  },
+  "featureList": [
+    "Semester GPA (SGPA) calculation",
+    "Iqra University official grading scale",
+    "Unlimited semesters and subjects",
+    "Real-time GPA updates",
+    "Secure cloud storage",
+    "Mobile-responsive design"
+  ],
+  "educationalLevel": "University",
+  "inLanguage": "en",
+  "keywords": "iqra university, gpa calculator, sgpa, cgpa, pakistan, university grades"
+}
